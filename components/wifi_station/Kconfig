@@ -1,0 +1,21 @@
+menu "WiFi Station"
+
+    config WIFI_STATION_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID (network name) to connect to.
+
+    config WIFI_STATION_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2).
+
+    config WIFI_STATION_MAX_RETRY
+        int "Maximum connection retries"
+        default 5
+        help
+            Number of retries when connection fails.
+
+endmenu

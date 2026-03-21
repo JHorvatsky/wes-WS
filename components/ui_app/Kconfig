@@ -1,0 +1,6 @@
+	menu "UI application"
+
+	config UI_APP_SQUARELINE
+        bool "SquareLine generated example"
+
+	endmenu
