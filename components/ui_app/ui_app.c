@@ -24,6 +24,7 @@
 void ui_app_init(void)
 {
     ui_init();
+    
 }
 //---------------------------- PRIVATE FUNCTIONS ------------------------------
 
