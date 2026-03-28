@@ -14,12 +14,16 @@ extern "C" {
 extern void ui_glazbascr_screen_init(void);
 extern void ui_glazbascr_screen_destroy(void);
 extern lv_obj_t * ui_glazbascr;
+extern void ui_event_Playbtng(lv_event_t * e);
 extern lv_obj_t * ui_Playbtng;
 extern lv_obj_t * ui_Label10;
+extern void ui_event_prevbtn(lv_event_t * e);
 extern lv_obj_t * ui_prevbtn;
 extern lv_obj_t * ui_Label11;
+extern void ui_event_nextbtn(lv_event_t * e);
 extern lv_obj_t * ui_nextbtn;
 extern lv_obj_t * ui_Label12;
+extern void ui_event_pausebtn(lv_event_t * e);
 extern lv_obj_t * ui_pausebtn;
 extern lv_obj_t * ui_Label13;
 extern void ui_event_Home_Btn_Sett4(lv_event_t * e);

@@ -4339,6 +4339,44 @@
                     "strtype": "_event/condition_P",
                     "strval": "",
                     "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000028,
+                    "strtype": "_event/action",
+                    "strval": "CALL FUNCTION",
+                    "childs": [
+                      {
+                        "nid": 1000029,
+                        "strtype": "CALL FUNCTION/Name",
+                        "strval": "CALL FUNCTION",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000030,
+                        "strtype": "CALL FUNCTION/Call",
+                        "strval": "<{Function_name}>( event_struct )",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000031,
+                        "strtype": "CALL FUNCTION/CallC",
+                        "strval": "<{Function_name}>( e );",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000032,
+                        "strtype": "CALL FUNCTION/Function_name",
+                        "strval": "ColorGame",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000033,
+                        "strtype": "CALL FUNCTION/Dont_export_function",
+                        "strval": "False",
+                        "InheritedType": 2
+                      }
+                    ],
+                    "InheritedType": 10
                   }
                 ],
                 "InheritedType": 4
@@ -5230,6 +5268,44 @@
                     "strtype": "_event/condition_P",
                     "strval": "",
                     "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000046,
+                    "strtype": "_event/action",
+                    "strval": "CALL FUNCTION",
+                    "childs": [
+                      {
+                        "nid": 1000047,
+                        "strtype": "CALL FUNCTION/Name",
+                        "strval": "CALL FUNCTION",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000048,
+                        "strtype": "CALL FUNCTION/Call",
+                        "strval": "<{Function_name}>( event_struct )",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000049,
+                        "strtype": "CALL FUNCTION/CallC",
+                        "strval": "<{Function_name}>( e );",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000050,
+                        "strtype": "CALL FUNCTION/Function_name",
+                        "strval": "startMusic",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000051,
+                        "strtype": "CALL FUNCTION/Dont_export_function",
+                        "strval": "False",
+                        "InheritedType": 2
+                      }
+                    ],
+                    "InheritedType": 10
                   }
                 ],
                 "InheritedType": 4
@@ -5559,6 +5635,44 @@
                     "nid": 1000019,
                     "strtype": "_event/condition_P",
                     "strval": "",
+                    "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000059,
+                    "strtype": "_event/action",
+                    "strval": "CALL FUNCTION",
+                    "childs": [
+                      {
+                        "nid": 1000060,
+                        "strtype": "CALL FUNCTION/Name",
+                        "strval": "CALL FUNCTION",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000061,
+                        "strtype": "CALL FUNCTION/Call",
+                        "strval": "<{Function_name}>( event_struct )",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000062,
+                        "strtype": "CALL FUNCTION/CallC",
+                        "strval": "<{Function_name}>( e );",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000063,
+                        "strtype": "CALL FUNCTION/Function_name",
+                        "strval": "changePrevSong",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000064,
+                        "strtype": "CALL FUNCTION/Dont_export_function",
+                        "strval": "False",
+                        "InheritedType": 2
+                      }
+                    ],
                     "InheritedType": 10
                   }
                 ],
@@ -5890,6 +6004,44 @@
                     "strtype": "_event/condition_P",
                     "strval": "",
                     "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000065,
+                    "strtype": "_event/action",
+                    "strval": "CALL FUNCTION",
+                    "childs": [
+                      {
+                        "nid": 1000066,
+                        "strtype": "CALL FUNCTION/Name",
+                        "strval": "CALL FUNCTION",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000067,
+                        "strtype": "CALL FUNCTION/Call",
+                        "strval": "<{Function_name}>( event_struct )",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000068,
+                        "strtype": "CALL FUNCTION/CallC",
+                        "strval": "<{Function_name}>( e );",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000069,
+                        "strtype": "CALL FUNCTION/Function_name",
+                        "strval": "changeNextSong",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000070,
+                        "strtype": "CALL FUNCTION/Dont_export_function",
+                        "strval": "False",
+                        "InheritedType": 2
+                      }
+                    ],
+                    "InheritedType": 10
                   }
                 ],
                 "InheritedType": 4
@@ -6219,6 +6371,44 @@
                     "nid": 1000019,
                     "strtype": "_event/condition_P",
                     "strval": "",
+                    "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000071,
+                    "strtype": "_event/action",
+                    "strval": "CALL FUNCTION",
+                    "childs": [
+                      {
+                        "nid": 1000072,
+                        "strtype": "CALL FUNCTION/Name",
+                        "strval": "CALL FUNCTION",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000073,
+                        "strtype": "CALL FUNCTION/Call",
+                        "strval": "<{Function_name}>( event_struct )",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000074,
+                        "strtype": "CALL FUNCTION/CallC",
+                        "strval": "<{Function_name}>( e );",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000075,
+                        "strtype": "CALL FUNCTION/Function_name",
+                        "strval": "stopMusic",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000076,
+                        "strtype": "CALL FUNCTION/Dont_export_function",
+                        "strval": "False",
+                        "InheritedType": 2
+                      }
+                    ],
                     "InheritedType": 10
                   }
                 ],
@@ -10795,6 +10985,44 @@
                     "strtype": "_event/condition_P",
                     "strval": "",
                     "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000034,
+                    "strtype": "_event/action",
+                    "strval": "CALL FUNCTION",
+                    "childs": [
+                      {
+                        "nid": 1000035,
+                        "strtype": "CALL FUNCTION/Name",
+                        "strval": "CALL FUNCTION",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000036,
+                        "strtype": "CALL FUNCTION/Call",
+                        "strval": "<{Function_name}>( event_struct )",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000037,
+                        "strtype": "CALL FUNCTION/CallC",
+                        "strval": "<{Function_name}>( e );",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000038,
+                        "strtype": "CALL FUNCTION/Function_name",
+                        "strval": "pulseMeterStart",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000039,
+                        "strtype": "CALL FUNCTION/Dont_export_function",
+                        "strval": "False",
+                        "InheritedType": 2
+                      }
+                    ],
+                    "InheritedType": 10
                   }
                 ],
                 "InheritedType": 4
@@ -11946,6 +12174,44 @@
                     "nid": 1000023,
                     "strtype": "_event/condition_P",
                     "strval": "",
+                    "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000040,
+                    "strtype": "_event/action",
+                    "strval": "CALL FUNCTION",
+                    "childs": [
+                      {
+                        "nid": 1000041,
+                        "strtype": "CALL FUNCTION/Name",
+                        "strval": "CALL FUNCTION",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000042,
+                        "strtype": "CALL FUNCTION/Call",
+                        "strval": "<{Function_name}>( event_struct )",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000043,
+                        "strtype": "CALL FUNCTION/CallC",
+                        "strval": "<{Function_name}>( e );",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000044,
+                        "strtype": "CALL FUNCTION/Function_name",
+                        "strval": "takePhoto",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000045,
+                        "strtype": "CALL FUNCTION/Dont_export_function",
+                        "strval": "False",
+                        "InheritedType": 2
+                      }
+                    ],
                     "InheritedType": 10
                   }
                 ],
@@ -15067,7 +15333,7 @@
     "theme_color1": 5,
     "theme_color2": 0,
     "custom_variable_prefix": "uic",
-    "backup_cnt": 56,
+    "backup_cnt": 59,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
     "lvgl_version": "8.3.6",
@@ -15077,7 +15343,7 @@
     "naming": null,
     "naming_force_lowercase": false,
     "naming_add_subcomponent": false,
-    "nidcnt": 1000028,
+    "nidcnt": 1000077,
     "BitDepth": 16,
     "Name": "esp32_gui"
   }

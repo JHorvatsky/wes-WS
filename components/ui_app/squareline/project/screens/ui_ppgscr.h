@@ -14,6 +14,7 @@ extern "C" {
 extern void ui_ppgscr_screen_init(void);
 extern void ui_ppgscr_screen_destroy(void);
 extern lv_obj_t * ui_ppgscr;
+extern void ui_event_PlaybtnHB(lv_event_t * e);
 extern lv_obj_t * ui_PlaybtnHB;
 extern lv_obj_t * ui_Label9;
 extern void ui_event_Home_Btn_Sett5(lv_event_t * e);

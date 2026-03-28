@@ -19,6 +19,42 @@ lv_obj_t * ui_Home_Img_S4 = NULL;
 lv_obj_t * ui_Panelpj = NULL;
 lv_obj_t * ui_imepj = NULL;
 // event funtions
+void ui_event_Playbtng(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        startMusic(e);
+    }
+}
+
+void ui_event_prevbtn(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        changePrevSong(e);
+    }
+}
+
+void ui_event_nextbtn(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        changeNextSong(e);
+    }
+}
+
+void ui_event_pausebtn(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        stopMusic(e);
+    }
+}
+
 void ui_event_Home_Btn_Sett4(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -138,6 +174,10 @@ void ui_glazbascr_screen_init(void)
     lv_obj_set_height(ui_imepj, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_imepj, LV_ALIGN_CENTER);
 
+    lv_obj_add_event_cb(ui_Playbtng, ui_event_Playbtng, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_prevbtn, ui_event_prevbtn, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_nextbtn, ui_event_nextbtn, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_pausebtn, ui_event_pausebtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Home_Btn_Sett4, ui_event_Home_Btn_Sett4, LV_EVENT_ALL, NULL);
 
 }

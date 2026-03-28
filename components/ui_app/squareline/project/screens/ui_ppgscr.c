@@ -13,6 +13,15 @@ lv_obj_t * ui_Home_Img_S5 = NULL;
 lv_obj_t * ui_PanelHB = NULL;
 lv_obj_t * ui_BPM_label = NULL;
 // event funtions
+void ui_event_PlaybtnHB(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        pulseMeterStart(e);
+    }
+}
+
 void ui_event_Home_Btn_Sett5(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -82,6 +91,7 @@ void ui_ppgscr_screen_init(void)
     lv_obj_set_align(ui_BPM_label, LV_ALIGN_CENTER);
     lv_label_set_text(ui_BPM_label, "## BPM");
 
+    lv_obj_add_event_cb(ui_PlaybtnHB, ui_event_PlaybtnHB, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Home_Btn_Sett5, ui_event_Home_Btn_Sett5, LV_EVENT_ALL, NULL);
 
 }

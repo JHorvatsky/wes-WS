@@ -19,6 +19,7 @@ extern lv_obj_t * ui_LED_color_panel;
 extern lv_obj_t * ui_LED_color_label;
 extern lv_obj_t * ui_resultColor;
 extern lv_obj_t * ui_Label3;
+extern void ui_event_Playbtng3(lv_event_t * e);
 extern lv_obj_t * ui_Playbtng3;
 extern lv_obj_t * ui_Label14;
 extern void ui_event_Home_Btn_Sett2(lv_event_t * e);

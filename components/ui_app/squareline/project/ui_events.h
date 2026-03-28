@@ -12,6 +12,13 @@ extern "C" {
 
 void dark_mode_on(lv_event_t * e);
 void dark_mode_off(lv_event_t * e);
+void ColorGame(lv_event_t * e);
+void startMusic(lv_event_t * e);
+void changePrevSong(lv_event_t * e);
+void changeNextSong(lv_event_t * e);
+void stopMusic(lv_event_t * e);
+void pulseMeterStart(lv_event_t * e);
+void takePhoto(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/

@@ -13,6 +13,15 @@ lv_obj_t * ui_Home_Img_S1 = NULL;
 lv_obj_t * ui_PanelHB1 = NULL;
 lv_obj_t * ui_BPM_label1 = NULL;
 // event funtions
+void ui_event_PlaybtnPhoto(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        takePhoto(e);
+    }
+}
+
 void ui_event_Home_Btn_Sett1(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -82,6 +91,7 @@ void ui_photoScr_screen_init(void)
     lv_obj_set_align(ui_BPM_label1, LV_ALIGN_CENTER);
     lv_label_set_text(ui_BPM_label1, "nesto");
 
+    lv_obj_add_event_cb(ui_PlaybtnPhoto, ui_event_PlaybtnPhoto, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Home_Btn_Sett1, ui_event_Home_Btn_Sett1, LV_EVENT_ALL, NULL);
 
 }

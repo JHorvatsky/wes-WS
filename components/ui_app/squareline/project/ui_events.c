@@ -40,3 +40,38 @@ void dark_mode_off(lv_event_t *e)
     lv_obj_set_style_bg_color(ui_Settings_scroll_panel, bg_color_black, 0);
     lv_obj_set_style_border_color(ui_Settings_scroll_panel, bg_color_black, 0);
 }
+
+void ColorGame(lv_event_t * e)
+{
+	// Your code here
+}
+
+void startMusic(lv_event_t * e)
+{
+	// Your code here
+}
+
+void changePrevSong(lv_event_t * e)
+{
+	// Your code here
+}
+
+void changeNextSong(lv_event_t * e)
+{
+	// Your code here
+}
+
+void stopMusic(lv_event_t * e)
+{
+	// Your code here
+}
+
+void pulseMeterStart(lv_event_t * e)
+{
+	// Your code here
+}
+
+void takePhoto(lv_event_t * e)
+{
+	// Your code here
+}
