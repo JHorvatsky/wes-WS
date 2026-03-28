@@ -16,7 +16,6 @@
 #define TAG "Song"
 
 static i2s_chan_handle_t tx_handle;
-extern lv_obj_t * ui_glazbascr;
 extern lv_obj_t * ui_imepj;
 extern int curr_freq;
 extern int song_start;
@@ -44,7 +43,6 @@ void init_i2s_max98357a(void) {
 
 void audio_sine_task(void *pvParameters) {
     init_i2s_max98357a();
-    lv_label_set_text_fmt(ui_imepj, "signal %d Hz", freq_arr[curr_freq]);
 
     const int num_samples = 128;
     int16_t samples[num_samples];
@@ -60,9 +58,10 @@ void audio_sine_task(void *pvParameters) {
             phase += 2.0 * PI * freq_arr[curr_freq] / SAMPLE_RATE;
             if (phase >= 2.0 * PI) phase -= 2.0 * PI;
         }
-        if (ui_glazbascr==NULL){song_start=0; break;}
         // Send data to MAX98357A via I2S DMA
         i2s_channel_write(tx_handle, samples, sizeof(samples), &bytes_written, portMAX_DELAY);
     }
-    while(1){ESP_LOGI(TAG, "Error");}
+
+    ESP_LOGI(TAG, "Deleting sine task...");
+    vTaskDelete(NULL);
 }

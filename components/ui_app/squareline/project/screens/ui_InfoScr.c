@@ -20,6 +20,7 @@ lv_obj_t * ui_Text_area = NULL;
 lv_obj_t * ui_Arc_Sett = NULL;
 lv_obj_t * ui_Slider2_Sett = NULL;
 lv_obj_t * ui_Keyboard_Sett = NULL;
+lv_obj_t * ui_weslabel = NULL;
 // event funtions
 void ui_event_Dark_Mode_Switch_Sett(lv_event_t * e)
 {
@@ -128,6 +129,8 @@ void ui_InfoScr_screen_init(void)
     ui_Settings_scroll_panel = lv_obj_create(ui_InfoScr);
     lv_obj_set_width(ui_Settings_scroll_panel, 304);
     lv_obj_set_height(ui_Settings_scroll_panel, 153);
+    lv_obj_set_x(ui_Settings_scroll_panel, 1);
+    lv_obj_set_y(ui_Settings_scroll_panel, 3);
     lv_obj_set_align(ui_Settings_scroll_panel, LV_ALIGN_CENTER);
     lv_obj_set_style_bg_color(ui_Settings_scroll_panel, lv_color_hex(0x101010), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_Settings_scroll_panel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -253,6 +256,18 @@ void ui_InfoScr_screen_init(void)
     lv_obj_set_align(ui_Keyboard_Sett, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Keyboard_Sett, LV_OBJ_FLAG_HIDDEN);     /// Flags
 
+    ui_weslabel = lv_label_create(ui_InfoScr);
+    lv_obj_set_width(ui_weslabel, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_weslabel, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_weslabel, -62);
+    lv_obj_set_y(ui_weslabel, -99);
+    lv_obj_set_align(ui_weslabel, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_weslabel, "WES - 2026 - HACKATON");
+    lv_obj_set_style_text_color(ui_weslabel, lv_color_hex(0xCACACA), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_weslabel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_weslabel, lv_color_hex(0x007D00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_weslabel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     lv_obj_add_event_cb(ui_Dark_Mode_Switch_Sett, ui_event_Dark_Mode_Switch_Sett, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Home_Btn_Sett, ui_event_Home_Btn_Sett, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Text_area, ui_event_Text_area, LV_EVENT_ALL, NULL);
@@ -281,5 +296,6 @@ void ui_InfoScr_screen_destroy(void)
     ui_Arc_Sett = NULL;
     ui_Slider2_Sett = NULL;
     ui_Keyboard_Sett = NULL;
+    ui_weslabel = NULL;
 
 }

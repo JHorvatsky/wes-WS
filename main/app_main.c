@@ -18,6 +18,7 @@
 #define JOY_Y_ADC_CH ADC_CHANNEL_7
 //-------------------------------- DATA TYPES ---------------------------------
 extern lv_obj_t *ui_BPM_label;
+extern lv_obj_t *ui_imepj;
 extern lv_obj_t *ui_ppgscr;
 extern lv_obj_t *ui_glazbascr;
 //---------------------- PRIVATE FUNCTION PROTOTYPES --------------------------
@@ -88,7 +89,7 @@ void Per_task (void *param){
         // Important: LVGL is not thread-safe. If your LVGL timer/task 
         // is running in another core, use a mutex or check if ui_uibtn1 exists.
         // 3. Small delay to prevent watchdog issues and console flooding
-        vTaskDelay(pdMS_TO_TICKS(150));
+        vTaskDelay(pdMS_TO_TICKS(200));
       }
 
 }

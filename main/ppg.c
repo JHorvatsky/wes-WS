@@ -17,8 +17,6 @@
 #define THRESH_K            0.6f
 #define REFRACTORY_MS       300
 
-extern lv_obj_t * ui_ppgscr;
-extern lv_obj_t * ui_Label9;
 extern lv_obj_t * ui_BPM_label;
 
 
@@ -67,7 +65,7 @@ static void process_sample(uint32_t raw)
             if (ibi_s > 0.3f && ibi_s < 2.0f) {
                 bpm = 20.0f / ibi_s;
                 ESP_LOGI(TAG, "Peak: raw=%lu bpm=%.1f", (unsigned long)raw, bpm);
-                if (ui_ppgscr != NULL) {
+                if (ui_BPM_label != NULL) {
                     snprintf(buffer, sizeof(buffer), "bpm=%.1f", bpm);
                     lv_label_set_text(ui_BPM_label, buffer);
                     lv_obj_set_style_text_color(ui_BPM_label, lv_palette_main(LV_PALETTE_GREEN), 0);
@@ -85,7 +83,7 @@ void app_sample(void *param)
 {
     adc_init();
 
-    if (ui_ppgscr != NULL) {
+    if (ui_BPM_label != NULL) {
             lv_label_set_text(ui_BPM_label, "");
             lv_obj_set_style_text_color(ui_BPM_label, lv_palette_main(LV_PALETTE_GREEN), 0);
             
@@ -105,8 +103,9 @@ void app_sample(void *param)
             process_sample(buf[i]);
         }
         vTaskDelay(pdMS_TO_TICKS(10));
-        if (ui_ppgscr == NULL) {break;}
+        
     }
 
-    while (1){ESP_LOGI(TAG, "Error");}
+    ESP_LOGI(TAG, "Deleting ppg task...");
+    vTaskDelete(NULL);
 }

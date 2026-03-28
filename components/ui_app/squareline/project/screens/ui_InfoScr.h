@@ -32,6 +32,7 @@ extern lv_obj_t * ui_Arc_Sett;
 extern lv_obj_t * ui_Slider2_Sett;
 extern void ui_event_Keyboard_Sett(lv_event_t * e);
 extern lv_obj_t * ui_Keyboard_Sett;
+extern lv_obj_t * ui_weslabel;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus
