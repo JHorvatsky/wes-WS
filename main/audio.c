@@ -27,7 +27,7 @@
  * │    CS    → GPIO 15                                   │
  * │    IRQ   → GPIO 21                                   │
  * └──────────────────────────────────────────────────────┘
- */
+ 
 
 #include <stdio.h>
 #include <string.h>
@@ -200,88 +200,11 @@ static void set_tone(int idx) {
 //  UI draw helpers
 // ═══════════════════════════════════════════════════════════════════════════════
 
-static void draw_btn(const btn_rect_t *b, uint16_t fill,
-                     const char *label, uint16_t text_col) {
-    ili9341_fill_round_rect(&g_tft, b->x, b->y, b->w, b->h, 8, fill);
-    ili9341_draw_round_rect(&g_tft, b->x, b->y, b->w, b->h, 8, COL_ACCENT);
-
-    uint16_t tw = ili9341_string_width(label, 2);
-    int16_t  tx = b->x + (b->w - tw) / 2;
-    int16_t  ty = b->y + (b->h - 14) / 2;
-    ili9341_draw_string(&g_tft, tx, ty, label, text_col, fill, 2);
-}
-
-static void draw_ui_skeleton(void) {
-    // Background
-    ili9341_fill_rect(&g_tft, 0, 0, SCR_W, SCR_H, COL_BG);
-
-    // Title bar
-    ili9341_fill_rect(&g_tft, 0, 0, SCR_W, 30, COL_PANEL);
-    ili9341_draw_string(&g_tft, 8, 7, "ESP32  TONE  PLAYER", COL_ACCENT, COL_PANEL, 2);
-
-    // Tone info card
-    ili9341_fill_round_rect(&g_tft, 10, 40, 300, 65, 6, COL_PANEL);
-    ili9341_draw_round_rect(&g_tft, 10, 40, 300, 65, 6, COL_ACCENT);
-    ili9341_draw_string(&g_tft, 18, 48, "NOW PLAYING", COL_DIM, COL_PANEL, 1);
-
-    // Status bar
-    ili9341_fill_round_rect(&g_tft, 10, 115, 300, 35, 6, COL_PANEL);
-    ili9341_draw_round_rect(&g_tft, 10, 115, 300, 35, 6, COL_ACCENT);
-
-    // Buttons
-    draw_btn(&BTN_PREV, COL_NAVBTN, "|<",   COL_WHITE);
-    draw_btn(&BTN_PLAY, COL_GREEN,  "PLAY", COL_WHITE);
-    draw_btn(&BTN_STOP, COL_RED,    "STOP", COL_WHITE);
-    draw_btn(&BTN_NEXT, COL_NAVBTN, ">|",   COL_WHITE);
-}
-
-static void update_tone_display(int idx) {
-    // Clear tone area
-    ili9341_fill_rect(&g_tft, 14, 58, 292, 22, COL_PANEL);
-
-    // Tone name (large)
-    uint16_t nw = ili9341_string_width(TONE_NAMES[idx], 3);
-    ili9341_draw_string(&g_tft,
-        18 + (284 - nw) / 2, 58,
-        TONE_NAMES[idx], COL_WHITE, COL_PANEL, 3);
-
-    // Frequency (small, below)
-    ili9341_fill_rect(&g_tft, 14, 82, 292, 12, COL_PANEL);
-    uint16_t fw = ili9341_string_width(TONE_FREQSTR[idx], 1);
-    ili9341_draw_string(&g_tft,
-        18 + (284 - fw) / 2, 83,
-        TONE_FREQSTR[idx], COL_DIM, COL_PANEL, 1);
-
-    // Track indicator dots
-    ili9341_fill_rect(&g_tft, 130, 96, 60, 8, COL_PANEL);
-    for (int i = 0; i < NUM_TONES; i++) {
-        uint16_t c = (i == idx) ? COL_ACCENT : COL_DIM;
-        ili9341_fill_circle(&g_tft, 148 + i * 12, 100, 3, c);
-    }
-}
-
-static void update_status_display(player_state_t state) {
-    ili9341_fill_rect(&g_tft, 14, 118, 292, 28, COL_PANEL);
-
-    const char *txt;
-    uint16_t    col;
-    if (state == STATE_PLAYING) { txt = ">>  PLAYING"; col = COL_GREEN; }
-    else                        { txt = "[]  STOPPED"; col = COL_RED;   }
-
-    uint16_t tw = ili9341_string_width(txt, 2);
-    ili9341_draw_string(&g_tft,
-        14 + (292 - tw) / 2, 126,
-        txt, col, COL_PANEL, 2);
-}
 
 // ═══════════════════════════════════════════════════════════════════════════════
 //  Touch hit-test
 // ═══════════════════════════════════════════════════════════════════════════════
 
-static bool in_btn(const btn_rect_t *b, int16_t tx, int16_t ty) {
-    return tx >= b->x && tx < b->x + b->w &&
-           ty >= b->y && ty < b->y + b->h;
-}
 
 // ═══════════════════════════════════════════════════════════════════════════════
 //  UI / touch task  (runs on Core 0 via app_main)
@@ -367,4 +290,4 @@ void app_main(void) {
     xTaskCreatePinnedToCore(ui_task, "ui", 4096, NULL, 3, NULL, 0);
 
     ESP_LOGI(TAG, "Ready.");
-}
+}*/

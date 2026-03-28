@@ -85,7 +85,7 @@ static void process_sample(uint32_t raw)
     prev2_filt = prev_filt;
     prev_filt = filt;
 }
-
+/*
 void app_main(void)
 {
     adc_init();
@@ -110,4 +110,4 @@ void app_main(void)
             }
         }
     }
-}
+}*/
