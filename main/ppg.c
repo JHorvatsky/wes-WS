@@ -22,7 +22,7 @@ extern lv_obj_t * ui_Label9;
 extern lv_obj_t * ui_BPM_label;
 
 
-static adc_continuous_handle_t adc_handle;
+static adc_oneshot_unit_handle_t adc_handle;
 static float baseline = 0.0f;
 static float env = 0.0f;
 static float prev_filt = 0.0f;
@@ -48,7 +48,7 @@ void adc_init(void)
 static void process_sample(uint32_t raw)
 {
     float x = (float)raw;
-    char buf[20];
+    char buffer[20];
 
     baseline += LPF_ALPHA * (x - baseline);
     float filt = x - baseline;
@@ -68,8 +68,8 @@ static void process_sample(uint32_t raw)
                 bpm = 60.0f / ibi_s;
                 ESP_LOGI(TAG, "Peak: raw=%lu bpm=%.1f", (unsigned long)raw, bpm);
                 if (ui_ppgscr != NULL) {
-                    snprintf(buf, sizeof(buf), "bpm=%.1f", bpm);
-                    lv_label_set_text(ui_BPM_label, buf);
+                    snprintf(buffer, sizeof(buffer), "bpm=%.1f", bpm);
+                    lv_label_set_text(ui_BPM_label, buffer);
                     lv_obj_set_style_text_color(ui_BPM_label, lv_palette_main(LV_PALETTE_GREEN), 0);
                 }
             }
@@ -93,11 +93,12 @@ void app_sample(void *param)
 
     uint8_t buf[ADC_FRAME_SIZE];
     uint32_t out_len = 0;
-    
+    int raw;
 
     while (1) {
         for (int i=0; i<ADC_FRAME_SIZE; i++){
-            adc_oneshot_read(adc1_handle, JOY_X_ADC_CH, &buf[i]);
+            adc_oneshot_read(adc_handle, ADC_CHANNEL_6, &raw);
+            buf[i]=raw;
             vTaskDelay(pdMS_TO_TICKS(5));
         }
         for (int i=0; i<ADC_FRAME_SIZE; i++){
@@ -107,5 +108,5 @@ void app_sample(void *param)
         if (ui_ppgscr == NULL) {break;}
     }
 
-    while (1){ESP_LOGI(TAG, "Error")}
+    while (1){ESP_LOGI(TAG, "Error");}
 }
