@@ -32,6 +32,7 @@ extern int song_start;
 
 void Per_task (void *param);
 void per_init(void);
+extern void init_i2s_max98357a(void);
 //------------------------- STATIC DATA & CONSTANTS ---------------------------
 
 //------------------------------- GLOBAL DATA ---------------------------------
@@ -57,6 +58,7 @@ void per_init(void){
     //btn1 conf
     gpio_reset_pin(BTN1_GPIO);
     gpio_set_direction(BTN1_GPIO, GPIO_MODE_INPUT);
+    init_i2s_max98357a();
 
 }
 
@@ -69,20 +71,22 @@ void Per_task (void *param){
         //char buf[32]; // Buffer for string formatting
         //int raw_x, raw_y
 
-        if (samp_start==1 && pulsHandle == NULL){
+        if (samp_start==1){
             xTaskCreatePinnedToCore(app_sample, "pULS", 10*4096, NULL, 0, &pulsHandle, 0);
             if (ui_ppgscr==NULL){samp_start=0;}
         }
         else if( (pulsHandle != NULL) ){
             vTaskDelete( pulsHandle );
+            pulsHandle=NULL;
         }
 
-        if (song_start==1 && songHandle==NULL){
+        if (song_start==1){
             xTaskCreatePinnedToCore(audio_sine_task, "glazba", 10*4096, NULL, 0, &songHandle, 0);
             if (ui_glazbascr==NULL){song_start=0;}
         }
         else if( (songHandle != NULL) ){
             vTaskDelete( songHandle );
+            songHandle=NULL;
         }
 
         // 3. Update LVGL Label
