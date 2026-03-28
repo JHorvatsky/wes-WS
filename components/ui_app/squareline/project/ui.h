@@ -20,8 +20,13 @@ extern "C" {
 
 #include "screens/ui_Home_Scr.h"
 #include "screens/ui_Color_Scr.h"
-#include "screens/ui_Settings_Scr.h"
 #include "screens/ui_PERscreen.h"
+#include "screens/ui_Gamescr.h"
+#include "screens/ui_glazbascr.h"
+#include "screens/ui_Settings_Scr.h"
+#include "screens/ui_ppgscr.h"
+#include "screens/ui_InfoScr.h"
+#include "screens/ui_PeekBooScr.h"
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -37,11 +42,20 @@ extern lv_anim_t * ShowBtn_Animation(lv_obj_t * TargetObject, int delay);
 extern lv_obj_t * ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
-LV_IMG_DECLARE(ui_img_colorwheel_icon_png);    // assets/colorwheel_icon.png
+LV_IMG_DECLARE(
+    ui_img_1716585447);    // assets/instagram-icon-logo-sign-symbol-of-social-media-the-glyph-solid-black-color-free-png.png
 LV_IMG_DECLARE(ui_img_bl_logo_symbol_png);    // assets/bl_logo_symbol.png
-LV_IMG_DECLARE(ui_img_settings_icon_png);    // assets/settings_icon.png
-LV_IMG_DECLARE(ui_img_led_icon_png);    // assets/led_icon.png
+LV_IMG_DECLARE(ui_img_1020243359);    // assets/wifi-icon-line-5.png
+LV_IMG_DECLARE(ui_img_1510277952);    // assets/simple-music-note-meaning-photo-8.png
+LV_IMG_DECLARE(ui_img_277078169);    // assets/video-game-controller-icon-33.png
+LV_IMG_DECLARE(ui_img_290899601);    // assets/info-icon--6.png
+LV_IMG_DECLARE(ui_img_heartbeat_png);    // assets/heartbeat.png
+LV_IMG_DECLARE(ui_img_1713359611);    // assets/pngtree-return-vector-icon-design-illustration-png-image_6585447.png
+LV_IMG_DECLARE(ui_img_427326921);    // assets/play-button-icon-png-0.png
 LV_IMG_DECLARE(ui_img_home_icon_png);    // assets/home_icon.png
+LV_IMG_DECLARE(ui_img_colorwheel_icon_png);    // assets/colorwheel_icon.png
+LV_IMG_DECLARE(ui_img_246777154);    // assets/Previous-Button-Transparent.png
+LV_IMG_DECLARE(ui_img_736385955);    // assets/pause-button-png-24.png
 
 // UI INIT
 void ui_init(void);

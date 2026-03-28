@@ -14,16 +14,16 @@ extern "C" {
 extern void ui_Color_Scr_screen_init(void);
 extern void ui_Color_Scr_screen_destroy(void);
 extern lv_obj_t * ui_Color_Scr;
-extern void ui_event_Dark_Mode_Switch_Color(lv_event_t * e);
-extern lv_obj_t * ui_Dark_Mode_Switch_Color;
-extern lv_obj_t * ui_Dark_Mode_Label_Color;
-extern void ui_event_Home_Btn_Color(lv_event_t * e);
-extern lv_obj_t * ui_Home_Btn_Color;
-extern lv_obj_t * ui_Home_Img_C;
+extern void ui_event_Ret_Btn_Color(lv_event_t * e);
+extern lv_obj_t * ui_Ret_Btn_Color;
+extern lv_obj_t * ui_ret_Img_C;
 extern lv_obj_t * ui_BL_logo_Color;
-extern lv_obj_t * ui_Colorwheel;
 extern lv_obj_t * ui_LED_color_panel;
 extern lv_obj_t * ui_LED_color_label;
+extern lv_obj_t * ui_resultColor;
+extern lv_obj_t * ui_Label3;
+extern lv_obj_t * ui_Playbtng3;
+extern lv_obj_t * ui_playbg3;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus
