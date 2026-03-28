@@ -8,7 +8,7 @@
 #define TAG "PPG"
 #define SAMPLE_RATE_HZ      5000
 #define ADC_FRAME_SIZE      256
-#define BUF_SIZE            1024
+#define BUF_SIZE            4096
 
 #define ADC_CH              ADC_CHANNEL_6   // GPIO34 on ESP32 ADC1
 #define ADC_UNIT_USED       ADC_UNIT_1
@@ -30,6 +30,11 @@ static float prev_filt = 0.0f;
 static float prev2_filt = 0.0f;
 static int64_t last_peak_us = 0;
 static float bpm = 0.0f;
+
+// Add these globals:
+static uint32_t sample_acc = 0;
+static uint16_t sample_count = 0;
+#define DECIMATION_FACTOR 50  // 5000Hz / 50 = 100Hz
 
 void adc_init(void)
 {
@@ -57,10 +62,23 @@ void adc_init(void)
     ESP_ERROR_CHECK(adc_continuous_start(adc_handle));
 }
 
+
+
 static void process_sample(uint32_t raw)
 {
-    float x = (float)raw;
     char buf[20];
+
+    // === DECIMATION: Average 50 samples → 100Hz effective ===
+    sample_acc += raw;
+    sample_count++;
+    
+    if (sample_count < DECIMATION_FACTOR) {
+        return;  // Skip until full average
+    }
+    
+    float x = (float)(sample_acc / DECIMATION_FACTOR);
+    sample_acc = 0;
+    sample_count = 0;
 
     baseline += LPF_ALPHA * (x - baseline);
     float filt = x - baseline;
