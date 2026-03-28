@@ -6,7 +6,7 @@
 #include "esp_adc/adc_continuous.h"
 
 #define TAG "PPG"
-#define SAMPLE_RATE_HZ      5000
+#define SAMPLE_RATE_HZ      20000
 #define ADC_FRAME_SIZE      256
 #define BUF_SIZE            4096
 
@@ -34,7 +34,7 @@ static float bpm = 0.0f;
 // Add these globals:
 static uint32_t sample_acc = 0;
 static uint16_t sample_count = 0;
-#define DECIMATION_FACTOR 50  // 5000Hz / 50 = 100Hz
+#define DECIMATION_FACTOR 200  // 5000Hz / 50 = 100Hz
 
 void adc_init(void)
 {
