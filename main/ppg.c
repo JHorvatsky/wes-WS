@@ -65,7 +65,7 @@ static void process_sample(uint32_t raw)
         if (last_peak_us != 0) {
             float ibi_s = (now_us - last_peak_us) / 1000000.0f;
             if (ibi_s > 0.3f && ibi_s < 2.0f) {
-                bpm = 60.0f / ibi_s;
+                bpm = 20.0f / ibi_s;
                 ESP_LOGI(TAG, "Peak: raw=%lu bpm=%.1f", (unsigned long)raw, bpm);
                 if (ui_ppgscr != NULL) {
                     snprintf(buffer, sizeof(buffer), "bpm=%.1f", bpm);
