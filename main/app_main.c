@@ -33,6 +33,9 @@ extern int song_start;
 void Per_task (void *param);
 void per_init(void);
 extern void init_i2s_max98357a(void);
+extern void apds9960_init(void);
+
+
 //------------------------- STATIC DATA & CONSTANTS ---------------------------
 
 //------------------------------- GLOBAL DATA ---------------------------------
@@ -59,7 +62,7 @@ void per_init(void){
     gpio_reset_pin(BTN1_GPIO);
     gpio_set_direction(BTN1_GPIO, GPIO_MODE_INPUT);
     init_i2s_max98357a();
-
+    apds9960_init();
 }
 
 
