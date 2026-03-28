@@ -12,6 +12,28 @@
  *   TFT BL pin    -> GPIO 32
  */
 
+/*Kod za app_main.c:
+
+void app_main(void)
+{
+    // Hardware init
+    i2c_master_init();
+    ledc_backlight_init();
+    veml7700_init();
+
+    // Brightness runs forever in background on core 1
+    xTaskCreatePinnedToCore(brightness_task, "brightness", 4096, NULL, 5, NULL, 1);
+
+    // You are free to start all your other tasks here
+    xTaskCreatePinnedToCore(display_task,    "display",    8192, NULL, 4, NULL, 0);
+    xTaskCreatePinnedToCore(touch_task,      "touch",      4096, NULL, 4, NULL, 0);
+    xTaskCreatePinnedToCore(wifi_task,       "wifi",       8192, NULL, 3, NULL, 0);
+    // app_main() returns here — that's fine, all tasks keep running
+}
+
+*/
+
+
 #include <math.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
