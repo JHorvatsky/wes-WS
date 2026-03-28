@@ -19,7 +19,6 @@
 //-------------------------------- DATA TYPES ---------------------------------
 extern lv_obj_t * ui_BPM_label;
 extern lv_obj_t * ui_ppgscr;
-adc_oneshot_unit_handle_t adc1_handle;
 //---------------------- PRIVATE FUNCTION PROTOTYPES --------------------------
 extern void app_sample(void *param);
 TaskHandle_t pulsHandle = NULL;
