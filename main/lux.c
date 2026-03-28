@@ -284,7 +284,7 @@ static void brightness_task(void *arg)
 }
 
 // ─── Entry point ───────────────────────────────────────────────────
-
+/*
 void app_main(void)
 {
     ESP_LOGI(TAG, "Booting brightness controller");

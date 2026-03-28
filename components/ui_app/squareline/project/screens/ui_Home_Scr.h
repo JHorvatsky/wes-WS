@@ -16,26 +16,25 @@ extern void ui_Home_Scr_screen_destroy(void);
 extern lv_obj_t * ui_Home_Scr;
 extern void ui_event_Photo_Btn(lv_event_t * e);
 extern lv_obj_t * ui_Photo_Btn;
-extern lv_obj_t * ui_Imagephoto;
+extern lv_obj_t * ui_Label8;
 extern lv_obj_t * ui_BL_logo_Home;
 extern lv_obj_t * ui_Dark_Mode_Label;
 extern void ui_event_Dark_Mode_Switch(lv_event_t * e);
 extern lv_obj_t * ui_Dark_Mode_Switch;
 extern void ui_event_wifi_Btn(lv_event_t * e);
 extern lv_obj_t * ui_wifi_Btn;
-extern lv_obj_t * ui_Imagewifi;
+extern lv_obj_t * ui_Label6;
 extern void ui_event_BTNglazba(lv_event_t * e);
 extern lv_obj_t * ui_BTNglazba;
-extern lv_obj_t * ui_imgglaz2;
-extern void ui_event_game_Btn(lv_event_t * e);
-extern lv_obj_t * ui_game_Btn;
-extern lv_obj_t * ui_Imagegame;
+extern lv_obj_t * ui_Label7;
 extern void ui_event_Info_Btn(lv_event_t * e);
 extern lv_obj_t * ui_Info_Btn;
-extern lv_obj_t * ui_Imageinfo;
+extern lv_obj_t * ui_Label4;
 extern void ui_event_HeartBeat_Btn(lv_event_t * e);
 extern lv_obj_t * ui_HeartBeat_Btn;
-extern lv_obj_t * ui_ImageHB;
+extern lv_obj_t * ui_Label5;
+extern lv_obj_t * ui_Color_Btn_Home3;
+extern lv_obj_t * ui_Label2;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

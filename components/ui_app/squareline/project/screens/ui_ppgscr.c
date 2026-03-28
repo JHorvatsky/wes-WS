@@ -7,7 +7,7 @@
 
 lv_obj_t * ui_ppgscr = NULL;
 lv_obj_t * ui_PlaybtnHB = NULL;
-lv_obj_t * ui_playbHB = NULL;
+lv_obj_t * ui_Label9 = NULL;
 lv_obj_t * ui_Home_Btn_Sett5 = NULL;
 lv_obj_t * ui_Home_Img_S5 = NULL;
 lv_obj_t * ui_PanelHB = NULL;
@@ -42,16 +42,11 @@ void ui_ppgscr_screen_init(void)
     lv_obj_set_style_bg_color(ui_PlaybtnHB, lv_color_hex(0x6AC6A4), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_PlaybtnHB, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_playbHB = lv_img_create(ui_PlaybtnHB);
-    lv_img_set_src(ui_playbHB, &ui_img_427326921);
-    lv_obj_set_width(ui_playbHB, LV_SIZE_CONTENT);   /// 320
-    lv_obj_set_height(ui_playbHB, LV_SIZE_CONTENT);    /// 320
-    lv_obj_set_align(ui_playbHB, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_playbHB, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
-    lv_obj_clear_flag(ui_playbHB, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_img_set_zoom(ui_playbHB, 48);
-    lv_obj_set_style_bg_color(ui_playbHB, lv_color_hex(0x6AC6A4), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_playbHB, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_Label9 = lv_label_create(ui_PlaybtnHB);
+    lv_obj_set_width(ui_Label9, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label9, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_Label9, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label9, "play\n");
 
     ui_Home_Btn_Sett5 = lv_btn_create(ui_ppgscr);
     lv_obj_set_width(ui_Home_Btn_Sett5, 36);
@@ -98,7 +93,7 @@ void ui_ppgscr_screen_destroy(void)
     // NULL screen variables
     ui_ppgscr = NULL;
     ui_PlaybtnHB = NULL;
-    ui_playbHB = NULL;
+    ui_Label9 = NULL;
     ui_Home_Btn_Sett5 = NULL;
     ui_Home_Img_S5 = NULL;
     ui_PanelHB = NULL;

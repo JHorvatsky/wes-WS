@@ -17,9 +17,9 @@
 #define JOY_X_ADC_CH ADC_CHANNEL_6 // GPIO 34
 #define JOY_Y_ADC_CH ADC_CHANNEL_7
 //-------------------------------- DATA TYPES ---------------------------------
-extern lv_obj_t * ui_uibtn1;
-extern lv_obj_t * ui_Joyx;
-extern lv_obj_t * ui_Joyy;
+//extern lv_obj_t * ui_uibtn1;
+//extern lv_obj_t * ui_Joyx;
+//extern lv_obj_t * ui_Joyy;
 adc_oneshot_unit_handle_t adc1_handle;
 //---------------------- PRIVATE FUNCTION PROTOTYPES --------------------------
 void Per_task (void *param);
@@ -74,7 +74,7 @@ void Per_task (void *param){
         // 3. Update LVGL Label
         // Important: LVGL is not thread-safe. If your LVGL timer/task 
         // is running in another core, use a mutex or check if ui_uibtn1 exists.
-        if (ui_uibtn1 != NULL) {
+        /*if (ui_uibtn1 != NULL) {
             
 
             if (btn_state == 0) {
@@ -103,7 +103,7 @@ void Per_task (void *param){
 
 
         // 3. Small delay to prevent watchdog issues and console flooding
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelay(pdMS_TO_TICKS(100));*/
       }
 
 }

@@ -14,6 +14,24 @@ extern "C" {
 extern void ui_InfoScr_screen_init(void);
 extern void ui_InfoScr_screen_destroy(void);
 extern lv_obj_t * ui_InfoScr;
+extern void ui_event_Dark_Mode_Switch_Sett(lv_event_t * e);
+extern lv_obj_t * ui_Dark_Mode_Switch_Sett;
+extern lv_obj_t * ui_Dark_Mode_Label_Sett;
+extern void ui_event_Home_Btn_Sett(lv_event_t * e);
+extern lv_obj_t * ui_Home_Btn_Sett;
+extern lv_obj_t * ui_Home_Img_S;
+extern lv_obj_t * ui_BL_logo_Sett;
+extern lv_obj_t * ui_Settings_scroll_panel;
+extern lv_obj_t * ui_Checkbox_Sett;
+extern lv_obj_t * ui_Dropdown_Sett;
+extern lv_obj_t * ui_Roller_Sett;
+extern lv_obj_t * ui_Slider1_Sett;
+extern void ui_event_Text_area(lv_event_t * e);
+extern lv_obj_t * ui_Text_area;
+extern lv_obj_t * ui_Arc_Sett;
+extern lv_obj_t * ui_Slider2_Sett;
+extern void ui_event_Keyboard_Sett(lv_event_t * e);
+extern lv_obj_t * ui_Keyboard_Sett;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

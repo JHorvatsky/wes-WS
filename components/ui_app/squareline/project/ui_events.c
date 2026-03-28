@@ -17,7 +17,7 @@ void dark_mode_on(lv_event_t *e)
     lv_obj_set_style_text_color(ui_Dark_Mode_Label_Sett, bg_color_black, 0);
     lv_obj_set_style_bg_color(ui_Home_Scr, bg_color_white, 0);
     lv_obj_set_style_bg_color(ui_Color_Scr, bg_color_white, 0);
-    lv_obj_set_style_bg_color(ui_Settings_Scr, bg_color_white, 0);
+    lv_obj_set_style_bg_color(ui_InfoScr, bg_color_white, 0);
 
     lv_obj_set_style_bg_color(ui_Settings_scroll_panel, bg_color_white, 0);
     lv_obj_set_style_border_color(ui_Settings_scroll_panel, bg_color_white, 0);
@@ -35,7 +35,7 @@ void dark_mode_off(lv_event_t *e)
     lv_obj_set_style_text_color(ui_Dark_Mode_Label_Sett, bg_color_white, 0);
     lv_obj_set_style_bg_color(ui_Home_Scr, bg_color_black, 0);
     lv_obj_set_style_bg_color(ui_Color_Scr, bg_color_black, 0);
-    lv_obj_set_style_bg_color(ui_Settings_Scr, bg_color_black, 0);
+    lv_obj_set_style_bg_color(ui_InfoScr, bg_color_black, 0);
 
     lv_obj_set_style_bg_color(ui_Settings_scroll_panel, bg_color_black, 0);
     lv_obj_set_style_border_color(ui_Settings_scroll_panel, bg_color_black, 0);

@@ -1,28 +1,14 @@
 SET(SOURCES screens/ui_Home_Scr.c
     screens/ui_Color_Scr.c
-    screens/ui_PERscreen.c
-    screens/ui_Gamescr.c
     screens/ui_glazbascr.c
-    screens/ui_Settings_Scr.c
-    screens/ui_ppgscr.c
     screens/ui_InfoScr.c
-    screens/ui_PeekBooScr.c
+    screens/ui_ppgscr.c
+    screens/ui_photoScr.c
     ui.c
     components/ui_comp_hook.c
     ui_helpers.c
     ui_events.c
-    images/ui_img_1716585447.c
     images/ui_img_bl_logo_symbol_png.c
-    images/ui_img_1020243359.c
-    images/ui_img_1510277952.c
-    images/ui_img_277078169.c
-    images/ui_img_290899601.c
-    images/ui_img_heartbeat_png.c
-    images/ui_img_1713359611.c
-    images/ui_img_427326921.c
-    images/ui_img_home_icon_png.c
-    images/ui_img_colorwheel_icon_png.c
-    images/ui_img_246777154.c
-    images/ui_img_736385955.c)
+    images/ui_img_home_icon_png.c)
 
 add_library(ui ${SOURCES})

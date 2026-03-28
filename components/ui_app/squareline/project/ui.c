@@ -313,13 +313,10 @@ void ui_init(void)
     lv_disp_set_theme(dispp, theme);
     ui_Home_Scr_screen_init();
     ui_Color_Scr_screen_init();
-    ui_PERscreen_screen_init();
-    ui_Gamescr_screen_init();
     ui_glazbascr_screen_init();
-    ui_Settings_Scr_screen_init();
-    ui_ppgscr_screen_init();
     ui_InfoScr_screen_init();
-    ui_PeekBooScr_screen_init();
+    ui_ppgscr_screen_init();
+    ui_photoScr_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_Home_Scr);
 }
@@ -328,11 +325,8 @@ void ui_destroy(void)
 {
     ui_Home_Scr_screen_destroy();
     ui_Color_Scr_screen_destroy();
-    ui_PERscreen_screen_destroy();
-    ui_Gamescr_screen_destroy();
     ui_glazbascr_screen_destroy();
-    ui_Settings_Scr_screen_destroy();
-    ui_ppgscr_screen_destroy();
     ui_InfoScr_screen_destroy();
-    ui_PeekBooScr_screen_destroy();
+    ui_ppgscr_screen_destroy();
+    ui_photoScr_screen_destroy();
 }
