@@ -3,15 +3,14 @@
 #include <stdint.h>
 
 #include "esp_err.h"
-#include "esp_adc/adc_continuous.h"
+#include "esp_adc/adc_oneshot.h"
 
 #define TAG "PPG"
-#define SAMPLE_RATE_HZ      20000
+#define SAMPLE_RATE_HZ      100
 #define ADC_FRAME_SIZE      256
-#define BUF_SIZE            4096
+#define BUF_SIZE            1024
+  // GPIO34 on ESP32 ADC1
 
-#define ADC_CH              ADC_CHANNEL_6   // GPIO34 on ESP32 ADC1
-#define ADC_UNIT_USED       ADC_UNIT_1
 
 #define LPF_ALPHA           0.01f
 #define ENV_ALPHA           0.05f
@@ -31,54 +30,25 @@ static float prev2_filt = 0.0f;
 static int64_t last_peak_us = 0;
 static float bpm = 0.0f;
 
-// Add these globals:
-static uint32_t sample_acc = 0;
-static uint16_t sample_count = 0;
-#define DECIMATION_FACTOR 200  // 5000Hz / 50 = 100Hz
-
 void adc_init(void)
 {
-    adc_continuous_handle_cfg_t hcfg = {
-        .max_store_buf_size = BUF_SIZE,
-        .conv_frame_size = ADC_FRAME_SIZE,
+    adc_oneshot_unit_handle_t adc1_handle;
+    adc_oneshot_unit_init_cfg_t init_config1 = {
+        .unit_id = ADC_UNIT_1,
     };
-    ESP_ERROR_CHECK(adc_continuous_new_handle(&hcfg, &adc_handle));
+    adc_oneshot_new_unit(&init_config1, &adc1_handle);
 
-    adc_digi_pattern_config_t pattern = {0};
-    pattern.atten = ADC_ATTEN_DB_12;
-    pattern.channel = ADC_CH;
-    pattern.unit = ADC_UNIT_USED;
-    pattern.bit_width = ADC_BITWIDTH_12;
-
-    adc_continuous_config_t cfg = {
-        .sample_freq_hz = SAMPLE_RATE_HZ,
-        .conv_mode = ADC_CONV_SINGLE_UNIT_1,
-        .format = ADC_DIGI_OUTPUT_FORMAT_TYPE1,
-        .pattern_num = 1,
-        .adc_pattern = &pattern,
+    adc_oneshot_chan_cfg_t config = {
+        .bitwidth = ADC_BITWIDTH_DEFAULT,
+        .atten = ADC_ATTEN_DB_12, // Allows full range 0-3.3V
     };
-
-    ESP_ERROR_CHECK(adc_continuous_config(adc_handle, &cfg));
-    ESP_ERROR_CHECK(adc_continuous_start(adc_handle));
+    adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_6, &config);
 }
-
-
 
 static void process_sample(uint32_t raw)
 {
+    float x = (float)raw;
     char buf[20];
-
-    // === DECIMATION: Average 50 samples → 100Hz effective ===
-    sample_acc += raw;
-    sample_count++;
-    
-    if (sample_count < DECIMATION_FACTOR) {
-        return;  // Skip until full average
-    }
-    
-    float x = (float)(sample_acc / DECIMATION_FACTOR);
-    sample_acc = 0;
-    sample_count = 0;
 
     baseline += LPF_ALPHA * (x - baseline);
     float filt = x - baseline;
@@ -123,25 +93,19 @@ void app_sample(void *param)
 
     uint8_t buf[ADC_FRAME_SIZE];
     uint32_t out_len = 0;
+    
 
     while (1) {
-        esp_err_t ret = adc_continuous_read(adc_handle, buf, ADC_FRAME_SIZE, &out_len, 1000);
-        if (ret == ESP_OK && out_len > 0) {
-            uint32_t samples = out_len / SOC_ADC_DIGI_RESULT_BYTES;
-            for (uint32_t i = 0; i < samples; i++) {
-                adc_digi_output_data_t *p = (adc_digi_output_data_t *)&buf[i * SOC_ADC_DIGI_RESULT_BYTES];
-                uint32_t raw = 0;
-
-#if CONFIG_IDF_TARGET_ESP32 || CONFIG_IDF_TARGET_ESP32S2
-                raw = p->type1.data;
-#else
-                raw = p->type2.data;
-#endif
-                process_sample(raw);
-            }
+        for (int i=0; i<ADC_FRAME_SIZE; i++){
+            adc_oneshot_read(adc1_handle, JOY_X_ADC_CH, &buf[i]);
+            vTaskDelay(pdMS_TO_TICKS(5));
         }
+        for (int i=0; i<ADC_FRAME_SIZE; i++){
+            process_sample(buf[i]);
+        }
+        vTaskDelay(pdMS_TO_TICKS(10));
         if (ui_ppgscr == NULL) {break;}
     }
 
-    while (1){ESP_LOGI(TAG, "Error");}
+    while (1){ESP_LOGI(TAG, "Error")}
 }
