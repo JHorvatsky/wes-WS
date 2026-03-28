@@ -63,7 +63,7 @@ void per_init(void){
     adc_oneshot_config_channel(adc1_handle, JOY_X_ADC_CH, &config);
     adc_oneshot_config_channel(adc1_handle, JOY_Y_ADC_CH, &config);
 }
-
+void nista();
 void Per_task (void *param){
    while (1) {
 
