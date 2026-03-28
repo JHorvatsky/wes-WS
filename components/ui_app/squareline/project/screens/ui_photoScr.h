@@ -22,6 +22,8 @@ extern lv_obj_t * ui_Home_Btn_Sett1;
 extern lv_obj_t * ui_Home_Img_S1;
 extern lv_obj_t * ui_PanelHB1;
 extern lv_obj_t * ui_BPM_label1;
+extern lv_obj_t * ui_NaslPPG2;
+extern lv_obj_t * ui_Label19;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

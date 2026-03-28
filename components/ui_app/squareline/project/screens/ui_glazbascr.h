@@ -31,6 +31,7 @@ extern lv_obj_t * ui_Home_Btn_Sett4;
 extern lv_obj_t * ui_Home_Img_S4;
 extern lv_obj_t * ui_Panelpj;
 extern lv_obj_t * ui_imepj;
+extern lv_obj_t * ui_Label20;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

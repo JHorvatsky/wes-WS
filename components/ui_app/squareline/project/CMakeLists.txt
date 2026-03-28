@@ -4,6 +4,7 @@ SET(SOURCES screens/ui_Home_Scr.c
     screens/ui_InfoScr.c
     screens/ui_ppgscr.c
     screens/ui_photoScr.c
+    screens/ui_WifiScr.c
     ui.c
     components/ui_comp_hook.c
     ui_helpers.c

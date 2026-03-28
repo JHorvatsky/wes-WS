@@ -27,9 +27,10 @@ static const char *TAG = "APDS9960";
 #define PROX_THRESHOLD      140     // 0-255 (Higher = Closer. ~150 is roughly 2cm)
 
 // Your Target Color in 0-255 format (Example: A specific Orange)
-const uint8_t TARGET_R_255 = 255;
-const uint8_t TARGET_G_255 = 165;
-const uint8_t TARGET_B_255 = 0;
+extern int color_start;
+extern int TARGET_RGB[3];
+extern lv_obj_t * ui_resultColor;
+extern lv_obj_t * ui_Label3;
 const uint8_t TOLERANCE_255 = 30; 
 
 void color_scan_task_prox_gated(void *pvParameters) {
@@ -57,12 +58,15 @@ void color_scan_task_prox_gated(void *pvParameters) {
                 uint8_t b255 = (uint8_t)((float)b / c * 255.0);
 
                 // 4. Compare with 0-255 Target
-                bool match = (abs(r255 - TARGET_R_255) < TOLERANCE_255) &&
-                             (abs(g255 - TARGET_G_255) < TOLERANCE_255) &&
-                             (abs(b255 - TARGET_B_255) < TOLERANCE_255);
+                if (abs(r255 - TARGET_RGB[0]) > TOLERANCE_255) {
+                    
+                }
+                             (abs(g255 - TARGET_RGB[1]) < TOLERANCE_255) &&
+                             (abs(b255 - TARGET_RGB[2]) < TOLERANCE_255);
 
                 if (match) {
                     ESP_LOGI("COLOR", "MATCH! RGB(%d, %d, %d)", r255, g255, b255);
+                    color_start=0;
                 } else {
                     ESP_LOGD("COLOR", "Object detected: RGB(%d, %d, %d)", r255, g255, b255);
                 }

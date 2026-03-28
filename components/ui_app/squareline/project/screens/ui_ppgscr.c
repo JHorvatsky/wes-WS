@@ -12,6 +12,8 @@ lv_obj_t * ui_Home_Btn_Sett5 = NULL;
 lv_obj_t * ui_Home_Img_S5 = NULL;
 lv_obj_t * ui_PanelHB = NULL;
 lv_obj_t * ui_BPM_label = NULL;
+lv_obj_t * ui_NaslPPG = NULL;
+lv_obj_t * ui_Label17 = NULL;
 // event funtions
 void ui_event_PlaybtnHB(lv_event_t * e)
 {
@@ -43,8 +45,8 @@ void ui_ppgscr_screen_init(void)
     ui_PlaybtnHB = lv_btn_create(ui_ppgscr);
     lv_obj_set_width(ui_PlaybtnHB, 75);
     lv_obj_set_height(ui_PlaybtnHB, 68);
-    lv_obj_set_y(ui_PlaybtnHB, -68);
-    lv_obj_set_x(ui_PlaybtnHB, lv_pct(-25));
+    lv_obj_set_y(ui_PlaybtnHB, 1);
+    lv_obj_set_x(ui_PlaybtnHB, lv_pct(-26));
     lv_obj_set_align(ui_PlaybtnHB, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_PlaybtnHB, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_PlaybtnHB, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -54,6 +56,8 @@ void ui_ppgscr_screen_init(void)
     ui_Label9 = lv_label_create(ui_PlaybtnHB);
     lv_obj_set_width(ui_Label9, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label9, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label9, 0);
+    lv_obj_set_y(ui_Label9, 8);
     lv_obj_set_align(ui_Label9, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label9, "play\n");
 
@@ -91,6 +95,22 @@ void ui_ppgscr_screen_init(void)
     lv_obj_set_align(ui_BPM_label, LV_ALIGN_CENTER);
     lv_label_set_text(ui_BPM_label, "## BPM");
 
+    ui_NaslPPG = lv_obj_create(ui_ppgscr);
+    lv_obj_set_width(ui_NaslPPG, 100);
+    lv_obj_set_height(ui_NaslPPG, 50);
+    lv_obj_set_x(ui_NaslPPG, -79);
+    lv_obj_set_y(ui_NaslPPG, -88);
+    lv_obj_set_align(ui_NaslPPG, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_NaslPPG, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_bg_color(ui_NaslPPG, lv_color_hex(0xEA5252), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_NaslPPG, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_Label17 = lv_label_create(ui_NaslPPG);
+    lv_obj_set_width(ui_Label17, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label17, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_Label17, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label17, "Srcomjer");
+
     lv_obj_add_event_cb(ui_PlaybtnHB, ui_event_PlaybtnHB, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Home_Btn_Sett5, ui_event_Home_Btn_Sett5, LV_EVENT_ALL, NULL);
 
@@ -108,5 +128,7 @@ void ui_ppgscr_screen_destroy(void)
     ui_Home_Img_S5 = NULL;
     ui_PanelHB = NULL;
     ui_BPM_label = NULL;
+    ui_NaslPPG = NULL;
+    ui_Label17 = NULL;
 
 }

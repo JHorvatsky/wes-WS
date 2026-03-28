@@ -317,6 +317,7 @@ void ui_init(void)
     ui_InfoScr_screen_init();
     ui_ppgscr_screen_init();
     ui_photoScr_screen_init();
+    ui_WifiScr_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_Home_Scr);
 }
@@ -329,4 +330,5 @@ void ui_destroy(void)
     ui_InfoScr_screen_destroy();
     ui_ppgscr_screen_destroy();
     ui_photoScr_screen_destroy();
+    ui_WifiScr_screen_destroy();
 }

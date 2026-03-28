@@ -43,9 +43,11 @@ void dark_mode_off(lv_event_t *e)
     lv_obj_set_style_border_color(ui_Settings_scroll_panel, bg_color_black, 0);
 }
 
+int color_start=0;
+
 void ColorGame(lv_event_t * e)
 {
-	// Your code here
+	color_start=1;
 }
 
 static int freq_arr[3]={200,400,440};

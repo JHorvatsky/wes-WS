@@ -12,6 +12,8 @@ lv_obj_t * ui_Home_Btn_Sett1 = NULL;
 lv_obj_t * ui_Home_Img_S1 = NULL;
 lv_obj_t * ui_PanelHB1 = NULL;
 lv_obj_t * ui_BPM_label1 = NULL;
+lv_obj_t * ui_NaslPPG2 = NULL;
+lv_obj_t * ui_Label19 = NULL;
 // event funtions
 void ui_event_PlaybtnPhoto(lv_event_t * e)
 {
@@ -43,8 +45,8 @@ void ui_photoScr_screen_init(void)
     ui_PlaybtnPhoto = lv_btn_create(ui_photoScr);
     lv_obj_set_width(ui_PlaybtnPhoto, 75);
     lv_obj_set_height(ui_PlaybtnPhoto, 68);
-    lv_obj_set_y(ui_PlaybtnPhoto, -68);
-    lv_obj_set_x(ui_PlaybtnPhoto, lv_pct(-25));
+    lv_obj_set_y(ui_PlaybtnPhoto, -7);
+    lv_obj_set_x(ui_PlaybtnPhoto, lv_pct(-23));
     lv_obj_set_align(ui_PlaybtnPhoto, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_PlaybtnPhoto, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_PlaybtnPhoto, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -89,7 +91,25 @@ void ui_photoScr_screen_init(void)
     lv_obj_set_width(ui_BPM_label1, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_BPM_label1, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_BPM_label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_BPM_label1, "nesto");
+    lv_label_set_text(ui_BPM_label1, "nije u \nfunkciji");
+
+    ui_NaslPPG2 = lv_obj_create(ui_photoScr);
+    lv_obj_set_width(ui_NaslPPG2, 100);
+    lv_obj_set_height(ui_NaslPPG2, 50);
+    lv_obj_set_x(ui_NaslPPG2, -79);
+    lv_obj_set_y(ui_NaslPPG2, -88);
+    lv_obj_set_align(ui_NaslPPG2, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_NaslPPG2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_bg_color(ui_NaslPPG2, lv_color_hex(0x52EA59), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_NaslPPG2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_Label19 = lv_label_create(ui_NaslPPG2);
+    lv_obj_set_width(ui_Label19, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label19, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label19, 0);
+    lv_obj_set_y(ui_Label19, -2);
+    lv_obj_set_align(ui_Label19, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label19, "Kamera");
 
     lv_obj_add_event_cb(ui_PlaybtnPhoto, ui_event_PlaybtnPhoto, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Home_Btn_Sett1, ui_event_Home_Btn_Sett1, LV_EVENT_ALL, NULL);
@@ -108,5 +128,7 @@ void ui_photoScr_screen_destroy(void)
     ui_Home_Img_S1 = NULL;
     ui_PanelHB1 = NULL;
     ui_BPM_label1 = NULL;
+    ui_NaslPPG2 = NULL;
+    ui_Label19 = NULL;
 
 }

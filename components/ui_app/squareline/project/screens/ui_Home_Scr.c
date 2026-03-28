@@ -21,6 +21,7 @@ lv_obj_t * ui_HeartBeat_Btn = NULL;
 lv_obj_t * ui_Label5 = NULL;
 lv_obj_t * ui_Color_Btn_Home3 = NULL;
 lv_obj_t * ui_Label2 = NULL;
+lv_obj_t * ui_Label18 = NULL;
 // event funtions
 void ui_event_Photo_Btn(lv_event_t * e)
 {
@@ -232,7 +233,15 @@ void ui_Home_Scr_screen_init(void)
     lv_obj_set_width(ui_Label2, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label2, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label2, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label2, "color");
+    lv_label_set_text(ui_Label2, "color\ngame");
+
+    ui_Label18 = lv_label_create(ui_Home_Scr);
+    lv_obj_set_width(ui_Label18, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label18, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label18, -113);
+    lv_obj_set_y(ui_Label18, -100);
+    lv_obj_set_align(ui_Label18, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label18, "");
 
     lv_obj_add_event_cb(ui_Photo_Btn, ui_event_Photo_Btn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Dark_Mode_Switch, ui_event_Dark_Mode_Switch, LV_EVENT_ALL, NULL);
@@ -265,5 +274,6 @@ void ui_Home_Scr_screen_destroy(void)
     ui_Label5 = NULL;
     ui_Color_Btn_Home3 = NULL;
     ui_Label2 = NULL;
+    ui_Label18 = NULL;
 
 }

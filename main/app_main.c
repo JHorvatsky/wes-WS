@@ -11,6 +11,7 @@
 #include "gui.h"
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
+#include <math.h>
 //---------------------------------- MACROS -----------------------------------
 
 #define BTN1_GPIO 36
@@ -21,14 +22,19 @@ extern lv_obj_t *ui_BPM_label;
 extern lv_obj_t *ui_imepj;
 extern lv_obj_t *ui_ppgscr;
 extern lv_obj_t *ui_glazbascr;
+extern lv_obj_t *ui_Color_Scr;
+extern lv_obj_t * ui_LED_color_panel;
+extern lv_obj_t * ui_LED_color_label;
+
 //---------------------- PRIVATE FUNCTION PROTOTYPES --------------------------
 extern void app_sample(void *param);
 extern void audio_sine_task(void *pvParameters);
-TaskHandle_t pulsHandle = NULL, songHandle=NULL;
+extern void color_scan_task_prox_gated(void *pvParameters);
+TaskHandle_t pulsHandle = NULL, songHandle=NULL, colorHandle=NULL;
 
 extern int samp_start;
 extern int song_start;
-
+extern int color_start;
 
 void Per_task (void *param);
 void per_init(void);
@@ -37,6 +43,16 @@ extern void apds9960_init(void);
 
 
 //------------------------- STATIC DATA & CONSTANTS ---------------------------
+const int main_colors[8] = {
+    0xFF0000, // Red
+    0x00FF00, // Green
+    0x0000FF, // Blue
+    0xFFA500, // Orange
+    0x800080, // Purple
+    0xFFC0CB, // Pink
+    0xA52A2A, // Brown
+    0x808080  // Gray
+};
 
 //------------------------------- GLOBAL DATA ---------------------------------
 
@@ -90,6 +106,15 @@ void Per_task (void *param){
         else if( (songHandle != NULL) ){
             vTaskDelete( songHandle );
             songHandle=NULL;
+        }
+
+        if (color_start==1){
+            xTaskCreatePinnedToCore(, "col", 10*4096, NULL, 0, &pulsHandle, 0);
+            if (ui_==NULL){color_start=0;}
+        }
+        else if( (colorHandle != NULL) ){
+            vTaskDelete( colorHandle );
+            colorHandle=NULL;
         }
 
         // 3. Update LVGL Label

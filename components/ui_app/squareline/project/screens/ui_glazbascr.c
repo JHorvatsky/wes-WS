@@ -18,6 +18,7 @@ lv_obj_t * ui_Home_Btn_Sett4 = NULL;
 lv_obj_t * ui_Home_Img_S4 = NULL;
 lv_obj_t * ui_Panelpj = NULL;
 lv_obj_t * ui_imepj = NULL;
+lv_obj_t * ui_Label20 = NULL;
 // event funtions
 void ui_event_Playbtng(lv_event_t * e)
 {
@@ -77,8 +78,8 @@ void ui_glazbascr_screen_init(void)
     ui_Playbtng = lv_btn_create(ui_glazbascr);
     lv_obj_set_width(ui_Playbtng, 75);
     lv_obj_set_height(ui_Playbtng, 68);
-    lv_obj_set_y(ui_Playbtng, -68);
-    lv_obj_set_x(ui_Playbtng, lv_pct(-25));
+    lv_obj_set_x(ui_Playbtng, -90);
+    lv_obj_set_y(ui_Playbtng, -54);
     lv_obj_set_align(ui_Playbtng, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Playbtng, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_Playbtng, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -94,8 +95,8 @@ void ui_glazbascr_screen_init(void)
     ui_prevbtn = lv_btn_create(ui_glazbascr);
     lv_obj_set_width(ui_prevbtn, 75);
     lv_obj_set_height(ui_prevbtn, 68);
-    lv_obj_set_y(ui_prevbtn, 28);
-    lv_obj_set_x(ui_prevbtn, lv_pct(-26));
+    lv_obj_set_x(ui_prevbtn, -90);
+    lv_obj_set_y(ui_prevbtn, 30);
     lv_obj_set_align(ui_prevbtn, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_prevbtn, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_prevbtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -111,7 +112,7 @@ void ui_glazbascr_screen_init(void)
     ui_nextbtn = lv_btn_create(ui_glazbascr);
     lv_obj_set_width(ui_nextbtn, 75);
     lv_obj_set_height(ui_nextbtn, 68);
-    lv_obj_set_y(ui_nextbtn, 25);
+    lv_obj_set_y(ui_nextbtn, 30);
     lv_obj_set_x(ui_nextbtn, lv_pct(30));
     lv_obj_set_align(ui_nextbtn, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_nextbtn, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
@@ -128,8 +129,8 @@ void ui_glazbascr_screen_init(void)
     ui_pausebtn = lv_btn_create(ui_glazbascr);
     lv_obj_set_width(ui_pausebtn, 75);
     lv_obj_set_height(ui_pausebtn, 68);
-    lv_obj_set_y(ui_pausebtn, 26);
-    lv_obj_set_x(ui_pausebtn, lv_pct(3));
+    lv_obj_set_x(ui_pausebtn, 5);
+    lv_obj_set_y(ui_pausebtn, 30);
     lv_obj_set_align(ui_pausebtn, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_pausebtn, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_pausebtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -165,8 +166,8 @@ void ui_glazbascr_screen_init(void)
     ui_Panelpj = lv_obj_create(ui_glazbascr);
     lv_obj_set_width(ui_Panelpj, 139);
     lv_obj_set_height(ui_Panelpj, 50);
-    lv_obj_set_x(ui_Panelpj, 57);
-    lv_obj_set_y(ui_Panelpj, -67);
+    lv_obj_set_x(ui_Panelpj, 50);
+    lv_obj_set_y(ui_Panelpj, -50);
     lv_obj_set_align(ui_Panelpj, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_Panelpj, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
@@ -175,6 +176,18 @@ void ui_glazbascr_screen_init(void)
     lv_obj_set_height(ui_imepj, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_imepj, LV_ALIGN_CENTER);
     lv_label_set_text(ui_imepj, "Signal 400Hz");
+
+    ui_Label20 = lv_label_create(ui_glazbascr);
+    lv_obj_set_width(ui_Label20, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label20, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label20, 1);
+    lv_obj_set_y(ui_Label20, -105);
+    lv_obj_set_align(ui_Label20, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label20, "GLAZBENI KUTAK");
+    lv_obj_set_style_bg_color(ui_Label20, lv_color_hex(0xFDF71E), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_Label20, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_grad_color(ui_Label20, lv_color_hex(0x0ABF00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_grad_dir(ui_Label20, LV_GRAD_DIR_HOR, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_add_event_cb(ui_Playbtng, ui_event_Playbtng, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_prevbtn, ui_event_prevbtn, LV_EVENT_ALL, NULL);
@@ -202,5 +215,6 @@ void ui_glazbascr_screen_destroy(void)
     ui_Home_Img_S4 = NULL;
     ui_Panelpj = NULL;
     ui_imepj = NULL;
+    ui_Label20 = NULL;
 
 }

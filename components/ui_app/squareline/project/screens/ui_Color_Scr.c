@@ -15,6 +15,7 @@ lv_obj_t * ui_Playbtng3 = NULL;
 lv_obj_t * ui_Label14 = NULL;
 lv_obj_t * ui_Home_Btn_Sett2 = NULL;
 lv_obj_t * ui_Home_Img_S2 = NULL;
+lv_obj_t * ui_Label21 = NULL;
 // event funtions
 void ui_event_Playbtng3(lv_event_t * e)
 {
@@ -82,6 +83,8 @@ void ui_Color_Scr_screen_init(void)
     lv_obj_set_y(ui_resultColor, 4);
     lv_obj_set_align(ui_resultColor, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_resultColor, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_bg_color(ui_resultColor, lv_color_hex(0xFB151A), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_resultColor, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label3 = lv_label_create(ui_resultColor);
     lv_obj_set_width(ui_Label3, LV_SIZE_CONTENT);   /// 1
@@ -103,7 +106,7 @@ void ui_Color_Scr_screen_init(void)
     lv_obj_set_width(ui_Label14, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label14, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label14, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label14, "play\n");
+    lv_label_set_text(ui_Label14, "play");
 
     ui_Home_Btn_Sett2 = lv_btn_create(ui_Color_Scr);
     lv_obj_set_width(ui_Home_Btn_Sett2, 36);
@@ -125,6 +128,26 @@ void ui_Color_Scr_screen_init(void)
     lv_obj_clear_flag(ui_Home_Img_S2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_img_set_zoom(ui_Home_Img_S2, 50);
 
+    ui_Label21 = lv_label_create(ui_Color_Scr);
+    lv_obj_set_width(ui_Label21, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label21, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label21, 44);
+    lv_obj_set_y(ui_Label21, -82);
+    lv_obj_set_align(ui_Label21, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label21, "Bojotragac");
+    lv_obj_set_style_text_color(ui_Label21, lv_color_hex(0x342EFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Label21, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Label21, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Label21, lv_color_hex(0xF113F0), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_Label21, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_grad_color(ui_Label21, lv_color_hex(0xB9AF0E), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_grad_dir(ui_Label21, LV_GRAD_DIR_VER, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_Label21, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_outline_color(ui_Label21, lv_color_hex(0x54C4E8), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_outline_opa(ui_Label21, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_outline_width(ui_Label21, 4, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_outline_pad(ui_Label21, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     lv_obj_add_event_cb(ui_Playbtng3, ui_event_Playbtng3, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Home_Btn_Sett2, ui_event_Home_Btn_Sett2, LV_EVENT_ALL, NULL);
 
@@ -145,5 +168,6 @@ void ui_Color_Scr_screen_destroy(void)
     ui_Label14 = NULL;
     ui_Home_Btn_Sett2 = NULL;
     ui_Home_Img_S2 = NULL;
+    ui_Label21 = NULL;
 
 }

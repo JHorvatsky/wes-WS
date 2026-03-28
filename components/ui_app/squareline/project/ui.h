@@ -24,6 +24,7 @@ extern "C" {
 #include "screens/ui_InfoScr.h"
 #include "screens/ui_ppgscr.h"
 #include "screens/ui_photoScr.h"
+#include "screens/ui_WifiScr.h"
 
 ///////////////////// VARIABLES ////////////////////
 
