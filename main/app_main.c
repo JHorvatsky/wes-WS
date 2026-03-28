@@ -6,7 +6,7 @@
 * COPYRIGHT NOTICE: (c) 2022 Byte Lab Grupa d.o.o.
 * All rights reserved.
 */
-
+// evo od mene dal radi
 //--------------------------------- INCLUDES ----------------------------------
 #include "gui.h"
 #include "driver/gpio.h"
