@@ -48,24 +48,31 @@ void ColorGame(lv_event_t * e)
 	// Your code here
 }
 
+static int freq_arr[3]={200,400,440};
+int curr_freq=1;
+int song_start=0;
+extern lv_obj_t * ui_imepj;
+
 void startMusic(lv_event_t * e)
 {
-	// Your code here
+	song_start=1;
 }
 
 void changePrevSong(lv_event_t * e)
 {
-	// Your code here
+	curr_freq=(curr_freq+2)%3;
+    lv_label_set_text_fmt(ui_imepj, "signal %d Hz", freq_arr[curr_freq]);
 }
 
 void changeNextSong(lv_event_t * e)
 {
-	// Your code here
+	curr_freq=(curr_freq+1)%3;
+    lv_label_set_text_fmt(ui_imepj, "signal %d Hz", freq_arr[curr_freq]);
 }
 
 void stopMusic(lv_event_t * e)
 {
-	// Your code here
+	song_start=0;
 }
 
 void pulseMeterStart(lv_event_t * e)

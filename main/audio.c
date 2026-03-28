@@ -4,18 +4,26 @@
 #include "freertos/task.h"
 #include "driver/i2s_std.h"
 #include "esp_check.h"
+#include "lvgl.h"
+
 
 #define SAMPLE_RATE     44100
-#define WAVE_FREQ_HZ    440      // Standard 'A' note
 #define PI              3.14159265358979323846
 #define I2S_BCK_IO      GPIO_NUM_26
 #define I2S_WS_IO       GPIO_NUM_25
 #define I2S_DO_IO       GPIO_NUM_22
 
+#define TAG "Song"
+
 static i2s_chan_handle_t tx_handle;
+extern lv_obj_t * ui_glazbascr;
+extern lv_obj_t * ui_imepj;
+extern int curr_freq;
+extern int song_start;
+static int freq_arr[3]={200,400,440};
 
 void init_i2s_max98357a(void) {
-    i2s_chan_config_t chan_cfg = I2S_CHAN_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
+    i2s_chan_config_t chan_cfg = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
     i2s_new_channel(&chan_cfg, &tx_handle, NULL);
 
     i2s_std_config_t std_cfg = {
@@ -30,11 +38,14 @@ void init_i2s_max98357a(void) {
             .invert_flags = { .mclk_inv = false, .bclk_inv = false, .ws_inv = false },
         },
     };
-    i2s_channel_init_std_tx(tx_handle, &std_cfg);
+    i2s_channel_init_std_mode(tx_handle, &std_cfg);
     i2s_channel_enable(tx_handle);
 }
 
 void audio_sine_task(void *pvParameters) {
+    init_i2s_max98357a();
+    lv_label_set_text_fmt(ui_imepj, "signal %d Hz", freq_arr[curr_freq]);
+
     const int num_samples = 128;
     int16_t samples[num_samples];
     float phase = 0;
@@ -46,11 +57,12 @@ void audio_sine_task(void *pvParameters) {
             samples[i] = (int16_t)(10000.0 * sin(phase));
             
             // Increment phase based on desired frequency
-            phase += 2.0 * PI * WAVE_FREQ_HZ / SAMPLE_RATE;
+            phase += 2.0 * PI * freq_arr[curr_freq] / SAMPLE_RATE;
             if (phase >= 2.0 * PI) phase -= 2.0 * PI;
         }
-
+        if (ui_glazbascr==NULL){song_start=0; break;}
         // Send data to MAX98357A via I2S DMA
         i2s_channel_write(tx_handle, samples, sizeof(samples), &bytes_written, portMAX_DELAY);
     }
+    while(1){ESP_LOGI(TAG, "Error");}
 }
