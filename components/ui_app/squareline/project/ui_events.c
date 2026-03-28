@@ -5,6 +5,8 @@
 
 #include "ui.h"
 
+int samp_start=0;
+
 void dark_mode_on(lv_event_t *e)
 {
     lv_color_t bg_color_white = lv_color_hex(0x111111);
@@ -68,7 +70,15 @@ void stopMusic(lv_event_t * e)
 
 void pulseMeterStart(lv_event_t * e)
 {
-	// Your code here
+    if (samp_start == 0) {
+        lv_label_set_text(ui_Label9, "stop");
+        samp_start=1;
+        
+    }
+    else{
+        lv_label_set_text(ui_Label9, "play");
+        samp_start=0;
+    }
 }
 
 void takePhoto(lv_event_t * e)

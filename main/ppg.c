@@ -1,11 +1,7 @@
-#include <stdio.h>
-#include <stdbool.h>
+#include "gui.h"
 #include <math.h>
 #include <stdint.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "esp_log.h"
-#include "esp_timer.h"
+
 #include "esp_err.h"
 #include "esp_adc/adc_continuous.h"
 
@@ -22,6 +18,11 @@
 #define THRESH_K            0.6f
 #define REFRACTORY_MS       300
 
+extern lv_obj_t * ui_ppgscr;
+extern lv_obj_t * ui_Label9;
+extern lv_obj_t * ui_BPM_label;
+
+
 static adc_continuous_handle_t adc_handle;
 static float baseline = 0.0f;
 static float env = 0.0f;
@@ -30,7 +31,7 @@ static float prev2_filt = 0.0f;
 static int64_t last_peak_us = 0;
 static float bpm = 0.0f;
 
-static void adc_init(void)
+void adc_init(void)
 {
     adc_continuous_handle_cfg_t hcfg = {
         .max_store_buf_size = BUF_SIZE,
@@ -39,7 +40,7 @@ static void adc_init(void)
     ESP_ERROR_CHECK(adc_continuous_new_handle(&hcfg, &adc_handle));
 
     adc_digi_pattern_config_t pattern = {0};
-    pattern.atten = ADC_ATTEN_DB_11;
+    pattern.atten = ADC_ATTEN_DB_12;
     pattern.channel = ADC_CH;
     pattern.unit = ADC_UNIT_USED;
     pattern.bit_width = ADC_BITWIDTH_12;
@@ -59,6 +60,7 @@ static void adc_init(void)
 static void process_sample(uint32_t raw)
 {
     float x = (float)raw;
+    char buf[20];
 
     baseline += LPF_ALPHA * (x - baseline);
     float filt = x - baseline;
@@ -77,6 +79,11 @@ static void process_sample(uint32_t raw)
             if (ibi_s > 0.3f && ibi_s < 2.0f) {
                 bpm = 60.0f / ibi_s;
                 ESP_LOGI(TAG, "Peak: raw=%lu bpm=%.1f", (unsigned long)raw, bpm);
+                if (ui_ppgscr != NULL) {
+                    snprintf(buf, sizeof(buf), "bpm=%.1f", bpm);
+                    lv_label_set_text(ui_BPM_label, buf);
+                    lv_obj_set_style_text_color(ui_BPM_label, lv_palette_main(LV_PALETTE_GREEN), 0);
+                }
             }
         }
         last_peak_us = now_us;
@@ -85,10 +92,16 @@ static void process_sample(uint32_t raw)
     prev2_filt = prev_filt;
     prev_filt = filt;
 }
-/*
-void app_main(void)
+
+void app_sample(void *param)
 {
     adc_init();
+
+    if (ui_ppgscr != NULL) {
+            lv_label_set_text(ui_BPM_label, "");
+            lv_obj_set_style_text_color(ui_BPM_label, lv_palette_main(LV_PALETTE_GREEN), 0);
+            
+    }
 
     uint8_t buf[ADC_FRAME_SIZE];
     uint32_t out_len = 0;
@@ -109,5 +122,8 @@ void app_main(void)
                 process_sample(raw);
             }
         }
+        if (ui_ppgscr == NULL) {break;}
     }
-}*/
+
+    while (1){ESP_LOGI(TAG, "Error");}
+}
