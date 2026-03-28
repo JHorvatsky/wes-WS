@@ -33,6 +33,7 @@ extern lv_obj_t * ui_Label4;
 extern void ui_event_HeartBeat_Btn(lv_event_t * e);
 extern lv_obj_t * ui_HeartBeat_Btn;
 extern lv_obj_t * ui_Label5;
+extern void ui_event_Color_Btn_Home3(lv_event_t * e);
 extern lv_obj_t * ui_Color_Btn_Home3;
 extern lv_obj_t * ui_Label2;
 // CUSTOM VARIABLES

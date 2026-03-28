@@ -3045,7 +3045,7 @@
                       {
                         "nid": -1099887837,
                         "strtype": "CHANGE SCREEN/Screen_to",
-                        "strval": "-",
+                        "strval": "GUID29383842-549515S7122103",
                         "InheritedType": 9
                       },
                       {
@@ -15067,7 +15067,7 @@
     "theme_color1": 5,
     "theme_color2": 0,
     "custom_variable_prefix": "uic",
-    "backup_cnt": 55,
+    "backup_cnt": 56,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
     "lvgl_version": "8.3.6",

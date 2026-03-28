@@ -80,6 +80,15 @@ void ui_event_HeartBeat_Btn(lv_event_t * e)
     }
 }
 
+void ui_event_Color_Btn_Home3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_Color_Scr, LV_SCR_LOAD_ANIM_FADE_ON, 500, 1000, &ui_Color_Scr_screen_init);
+    }
+}
+
 // build funtions
 
 void ui_Home_Scr_screen_init(void)
@@ -231,6 +240,7 @@ void ui_Home_Scr_screen_init(void)
     lv_obj_add_event_cb(ui_BTNglazba, ui_event_BTNglazba, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Info_Btn, ui_event_Info_Btn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_HeartBeat_Btn, ui_event_HeartBeat_Btn, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_Color_Btn_Home3, ui_event_Color_Btn_Home3, LV_EVENT_ALL, NULL);
 
 }
 
