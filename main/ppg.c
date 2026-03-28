@@ -6,7 +6,7 @@
 #include "esp_adc/adc_continuous.h"
 
 #define TAG "PPG"
-#define SAMPLE_RATE_HZ      100
+#define SAMPLE_RATE_HZ      5000
 #define ADC_FRAME_SIZE      256
 #define BUF_SIZE            1024
 
