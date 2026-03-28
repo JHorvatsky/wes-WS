@@ -19,7 +19,6 @@
     T_CS  -> GPIO 15  (touch)
 */
 
-#include <Arduino.h>
 #include <driver/i2s.h>
 #include <SPI.h>
 #include <Adafruit_GFX.h>
