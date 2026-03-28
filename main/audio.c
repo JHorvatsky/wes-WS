@@ -13,7 +13,7 @@
  * │    LRC   → GPIO 25                                   │
  * │    DIN   → GPIO 22                                   │
  * │                                                      │
- * │  SPI (shared bus, SPI2/HSPI)                        │
+ * │  SPI (shared bus, SPI2/HSPI)                         │
  * │    MOSI  → GPIO 23                                   │
  * │    MISO  → GPIO 19                                   │
  * │    CLK   → GPIO 18                                   │
