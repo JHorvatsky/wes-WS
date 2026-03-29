@@ -4013,7 +4013,7 @@
                   {
                     "nid": 1030,
                     "strtype": "LABEL/Text",
-                    "strval": "Text",
+                    "strval": "Pokreni\\n\t igru",
                     "InheritedType": 10
                   },
                   {
@@ -5102,12 +5102,6 @@
                           255
                         ],
                         "InheritedType": 7
-                      },
-                      {
-                        "nid": 10450,
-                        "strtype": "_style/Text_Font",
-                        "strval": "montserrat_20",
-                        "InheritedType": 3
                       },
                       {
                         "nid": 10520,
@@ -17680,7 +17674,7 @@
     "theme_color1": 5,
     "theme_color2": 0,
     "custom_variable_prefix": "uic",
-    "backup_cnt": 64,
+    "backup_cnt": 66,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
     "lvgl_version": "8.3.6",

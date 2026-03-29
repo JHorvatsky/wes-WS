@@ -4,6 +4,7 @@
 #include "driver/i2c.h"
 #include <math.h>
 #include "esp_log.h"
+#include "lvgl.h"
 
 static const char *TAG = "APDS9960";
 
@@ -33,6 +34,22 @@ extern lv_obj_t * ui_resultColor;
 extern lv_obj_t * ui_Label3;
 const uint8_t TOLERANCE_255 = 30; 
 
+uint16_t apds_read_16bit(uint8_t reg_low);
+
+// Helper to write to I2C
+esp_err_t apds_write_reg(uint8_t reg, uint8_t data) {
+    uint8_t write_buf[2] = {reg, data};
+    return i2c_master_write_to_device(I2C_MASTER_NUM, APDS9960_ADDR, write_buf, sizeof(write_buf), pdMS_TO_TICKS(100));
+}
+
+void apds9960_deinit(void) {
+    // Power down the sensor internally first
+    apds_write_reg(0x80, 0x00); 
+    
+    // Uninstall the I2C driver to free up GPIO 21 and 22
+    i2c_driver_delete(I2C_MASTER_NUM);
+}
+
 void color_scan_task_prox_gated(void *pvParameters) {
     // Modify init to also enable Proximity (0x04)
     
@@ -58,16 +75,21 @@ void color_scan_task_prox_gated(void *pvParameters) {
                 uint8_t b255 = (uint8_t)((float)b / c * 255.0);
 
                 // 4. Compare with 0-255 Target
-                if (abs(r255 - TARGET_RGB[0]) > TOLERANCE_255) {
-                    
-                }
+                bool match = (abs(r255 - TARGET_RGB[0]) > TOLERANCE_255) &&
                              (abs(g255 - TARGET_RGB[1]) < TOLERANCE_255) &&
                              (abs(b255 - TARGET_RGB[2]) < TOLERANCE_255);
 
                 if (match) {
+                    if (ui_resultColor != NULL){
+
+                        lv_label_set_text(ui_Label3, "BRAVO!");
+                    }
                     ESP_LOGI("COLOR", "MATCH! RGB(%d, %d, %d)", r255, g255, b255);
                     color_start=0;
                 } else {
+                    if (ui_resultColor != NULL){
+                        lv_label_set_text(ui_Label3, "Kriva boja!");
+                    }
                     ESP_LOGD("COLOR", "Object detected: RGB(%d, %d, %d)", r255, g255, b255);
                 }
             }
@@ -80,17 +102,14 @@ void color_scan_task_prox_gated(void *pvParameters) {
     }
 }
 
-// Helper to write to I2C
-esp_err_t apds_write_reg(uint8_t reg, uint8_t data) {
-    uint8_t write_buf[2] = {reg, data};
-    return i2c_master_write_to_device(I2C_MASTER_NUM, APDS9960_ADDR, write_buf, sizeof(write_buf), pdMS_TO_TICKS(100));
-}
+
 
 // Helper to read 16-bit values (Registers are Low/High byte pairs)
 uint16_t apds_read_16bit(uint8_t reg_low) {
     uint8_t data[2];
     i2c_master_write_read_device(I2C_MASTER_NUM, APDS9960_ADDR, &reg_low, 1, data, 2, pdMS_TO_TICKS(100));
-    return (uint16_t)(data[1] << 8 | data[0]);
+    int a=(data[1] << 8 | data[0]);
+    return (uint16_t)a;
 }
 
 void apds9960_init() {
