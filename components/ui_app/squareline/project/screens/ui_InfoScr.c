@@ -154,7 +154,7 @@ void ui_InfoScr_screen_init(void)
     lv_obj_set_style_bg_opa(ui_Checkbox_Sett, 255, LV_PART_INDICATOR | LV_STATE_CHECKED);
 
     ui_Dropdown_Sett = lv_dropdown_create(ui_Settings_scroll_panel);
-    lv_dropdown_set_options(ui_Dropdown_Sett, "Josip Sarec\n");
+    lv_dropdown_set_options(ui_Dropdown_Sett, "Martin Knaus\nJosip Sarec\nBruno Vujinovič\nDominik Vukoja");
     lv_obj_set_width(ui_Dropdown_Sett, 262);
     lv_obj_set_height(ui_Dropdown_Sett, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Dropdown_Sett, -8);

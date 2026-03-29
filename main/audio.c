@@ -20,13 +20,7 @@ extern lv_obj_t * ui_imepj;
 extern int curr_freq;
 extern int song_start;
 static int freq_arr[3]={200,400,440};
-
-void init_i2s_max98357a(void) {
-    if (tx_handle != NULL) {return;}
-    i2s_chan_config_t chan_cfg = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
-    i2s_new_channel(&chan_cfg, &tx_handle, NULL);
-
-    i2s_std_config_t std_cfg = {
+i2s_std_config_t std_cfg = {
         .clk_cfg = I2S_STD_CLK_DEFAULT_CONFIG(SAMPLE_RATE),
         .slot_cfg = I2S_STD_MSB_SLOT_DEFAULT_CONFIG(I2S_DATA_BIT_WIDTH_16BIT, I2S_SLOT_MODE_MONO),
         .gpio_cfg = {
@@ -38,11 +32,21 @@ void init_i2s_max98357a(void) {
             .invert_flags = { .mclk_inv = false, .bclk_inv = false, .ws_inv = false },
         },
     };
+
+void init_i2s_max98357a(void) {
+    if (tx_handle != NULL) {return;}
+    i2s_chan_config_t chan_cfg = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
+    i2s_new_channel(&chan_cfg, &tx_handle, NULL);
+    
+    
+}
+void aud_dis(void){
+    i2s_channel_enable(tx_handle);
+    i2s_del_channel(tx_handle);
+}
+void audio_sine_task(void *pvParameters) {
     i2s_channel_init_std_mode(tx_handle, &std_cfg);
     i2s_channel_enable(tx_handle);
-}
-
-void audio_sine_task(void *pvParameters) {
 
     const int num_samples = 128;
     int16_t samples[num_samples];
@@ -63,7 +67,6 @@ void audio_sine_task(void *pvParameters) {
     }
 
     ESP_LOGI(TAG, "Deleting sine task...");
-    i2s_channel_disable(tx_handle);
-    i2s_del_channel(tx_handle);
+    aud_dis();
     vTaskDelete(NULL);
 }

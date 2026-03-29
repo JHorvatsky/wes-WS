@@ -12,6 +12,7 @@
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
 #include "esp_random.h"
+#include "driver/i2s_std.h"
 #include <string.h>
 //---------------------------------- MACROS -----------------------------------
 
@@ -43,6 +44,7 @@ void per_init(void);
 extern void init_i2s_max98357a(void);
 //extern void apds9960_init(void);
 //extern void apds9960_deinit(void);
+extern void aud_dis();
 
 //------------------------- STATIC DATA & CONSTANTS ---------------------------
 const int main_colors[8] = {
@@ -133,6 +135,7 @@ void Per_task (void *param){
             if (ui_glazbascr==NULL){song_start=0;}
         }
         else if( (songHandle != NULL) ){
+            aud_dis();
             vTaskDelete( songHandle );
             songHandle=NULL;
         }
